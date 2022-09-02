@@ -11,9 +11,10 @@ Make an ons-screen calculator using JavaScript, HTML, and CSS.
  - Git/Github
  - Chrome developer tools
  - Flexbox
+ - CSS Grid
  
 ## What I learned:
- - 
+ - Used CSS Grid for the first time to display calculator
  
 ## Still can improve:
  - 

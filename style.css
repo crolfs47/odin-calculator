@@ -1,0 +1,29 @@
+body {
+    
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 75px 75px 75px 75px;
+    grid-gap: 10px;
+}
+.display {
+    grid-column: span 4;
+    border: solid black 2px;
+    height: 75px;
+}
+
+.two-column {
+    grid-column: span 2;
+}
+
