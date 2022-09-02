@@ -14,16 +14,19 @@ h1 {
 
 .calculator-grid {
     display: grid;
-    grid-template-columns: 75px 75px 75px 75px;
+    grid-template-columns: 60px 60px 60px 60px;
     grid-gap: 10px;
 }
 .display {
     grid-column: span 4;
     border: solid black 2px;
-    height: 75px;
+    height: 90px;
 }
 
 .two-column {
     grid-column: span 2;
 }
 
+button {
+    height: 60px;
+}
