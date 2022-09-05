@@ -11,54 +11,19 @@ const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 let displayValue = document.querySelector('.display').textContent;
 
-// Basic math operator functions - do we need separate functions for each operator or can I just put it in the operator function?
-function add(a, b){
-    return a + b;
-}
-
-function subtract(a, b){
-    return a-b;
-}
-
-function multiply(a,b){
-    return a*b;
-}
-
-function divide(a,b){
-    return a/b;
-}
-
-function operate(operator, a, b) {
-    if (operator === '+') {
-        total = add(a, b);
-    }
-    if (operator === '-'){
-        total = subtract(a, b);
-    }
-    if (operator === '*'){
-        total = multiply(a, b);
-    }
-    if (operator ==='/'){
-        total = divide(a, b);
-    }
-    console.log('total = ' + total);
-    display.textContent = total;
-    return total;
-}
-
 function setNumber(number) {
-    if (display.textContent === ''|| display.textContent === '0') {
+    if (display.textContent === '' || display.textContent === '0') {
         display.textContent = number.textContent;
     }
     else if (display.textContent !== '' || display.textContent !== 0 || display.textContent !== '0') {
         display.textContent += number.textContent;
     }
     displayValue = parseFloat(display.textContent);
-    console.log('displayValue = ' +displayValue);
-}    
+    console.log('displayValue = ' + displayValue);
+}
 
 function setOperator(operator) {
-    if (display.textContent === ''){
+    if (display.textContent === '') {
         return;
     }
     if (total === null) {
@@ -70,12 +35,12 @@ function setOperator(operator) {
         console.log('new num1 = ' + num1);
     }
     if (operator.textContent === '÷') {
-        operator.textContent = '/';
+        currentOperator = '/';
     }
-    if (operator.textContent === 'x') {
-        operator.textContent = '*';
+    else if (operator.textContent === 'x') {
+        currentOperator = '*';
     }
-    currentOperator = operator.textContent;
+    else currentOperator = operator.textContent;
     console.log('currentOperator = ' + currentOperator);
     resetScreen();
 };
@@ -89,7 +54,6 @@ function calculate() {
     display.textContent = equals.textContent;
     resetScreen();
     operate(currentOperator, num1, num2);
-    
 }
 
 function resetScreen() {
@@ -101,6 +65,39 @@ function clearScreen() {
     location.reload();
 }
 
+// Basic math operator functions - do we need separate functions for each operator or can I just put it in the operator function?
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
+
+function operate(operator, a, b) {
+    if (operator === '+') {
+        total = add(a, b);
+    }
+    if (operator === '-') {
+        total = subtract(a, b);
+    }
+    if (operator === '*') {
+        total = multiply(a, b);
+    }
+    if (operator === '/') {
+        total = divide(a, b);
+    }
+    display.textContent = total;
+    return total;
+}
 
 // Event listeners
 numbers.forEach((number) => {
