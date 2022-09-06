@@ -9,9 +9,10 @@ const display = document.querySelector('.display');
 const buttons = document.querySelector('button');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
+const backspace = document.querySelector('.backspace');
 let displayValue = document.querySelector('.display').textContent;
 
-function setNumber(number) {
+function displayNumber(number) {
     if (display.textContent === '' || display.textContent === '0') {
         display.textContent = number.textContent;
     }
@@ -23,24 +24,20 @@ function setNumber(number) {
 }
 
 function setOperator(operator) {
-    if (display.textContent === '') {
-        return;
-    }
+    if (currentOperator !== null) calculate();
+    if (display.textContent === '') return;
     if (total === null) {
         num1 = parseFloat(display.textContent);
         console.log('num1 = ' + num1);
-    }
-    else {
+    } else {
         num1 = parseFloat(total);
         console.log('new num1 = ' + num1);
     }
     if (operator.textContent === '÷') {
         currentOperator = '/';
-    }
-    else if (operator.textContent === 'x') {
+    } else if (operator.textContent === 'x') {
         currentOperator = '*';
-    }
-    else currentOperator = operator.textContent;
+    } else currentOperator = operator.textContent;
     console.log('currentOperator = ' + currentOperator);
     resetScreen();
 };
@@ -54,6 +51,8 @@ function calculate() {
     display.textContent = equals.textContent;
     resetScreen();
     operate(currentOperator, num1, num2);
+    currentOperator = null;
+    total = null;
 }
 
 function resetScreen() {
@@ -63,6 +62,11 @@ function resetScreen() {
 
 function clearScreen() {
     location.reload();
+}
+
+function backSpace() {
+    displayValue = (displayValue).toString().slice(0,-1);
+    display.textContent = displayValue;
 }
 
 // Basic math operator functions - do we need separate functions for each operator or can I just put it in the operator function?
@@ -93,8 +97,13 @@ function operate(operator, a, b) {
         total = multiply(a, b);
     }
     if (operator === '/') {
+        if (num2 === 0) {
+            alert("Can't divide by zero!");
+            return;
+        }
         total = divide(a, b);
     }
+    total = Math.round(total * 100) / 100;
     display.textContent = total;
     return total;
 }
@@ -102,7 +111,7 @@ function operate(operator, a, b) {
 // Event listeners
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        setNumber(number);
+        displayNumber(number);
     })
 })
 
@@ -119,5 +128,9 @@ equals.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
     clearScreen();
+})
+
+backspace.addEventListener('click', () => {
+    backSpace();
 })
 
