@@ -1,10 +1,12 @@
 body {
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(92, 154, 128);
 }
 
 h1 {
     display: flex;
     justify-content: center;
+    color: rgb(31, 61, 48)
 }
 
 .container {
@@ -14,13 +16,27 @@ h1 {
 
 .calculator-grid {
     display: grid;
+    background-color: rgb(60, 97, 81);
     grid-template-columns: 60px 60px 60px 60px;
     grid-gap: 10px;
+    padding: 25px;
+    border: solid rgb(31, 61, 48) 4px;
+    border-radius: 10px;
 }
 .display {
+    display: flex;
+    flex-wrap: wrap;
     grid-column: span 4;
-    border: solid black 2px;
-    height: 90px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 15px;
+    font-size: 20px;
+    color: rgb(31, 61, 48);
+    border: solid rgb(31, 61, 48) 2px;
+    height: 60px;
+    background-color: rgb(182, 221, 205);
+    border-radius: 10px;
+    word-break: break-all;
 }
 
 .two-column {
@@ -29,4 +45,14 @@ h1 {
 
 button {
     height: 60px;
+    background-color:rgb(92, 154, 128);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid rgb(31, 61, 48) 2px;
+}
+
+button:hover {
+    opacity: 50%;
+    cursor: pointer;
 }
